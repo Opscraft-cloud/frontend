@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Shadtest from './components/shadtest'
+import Shadtest from './components/Shadtest'
 
 function App() {
   // const [count, setCount] = useState(0)

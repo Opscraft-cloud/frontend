@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 import { ArrowUpIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -16,6 +17,10 @@ import {
 import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
 function ShadCN() {
+  const [text, setText] = useState("");
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
   return (
     <>
     <div className="flex min-h-svh flex-col items-center justify-center">
@@ -24,9 +29,14 @@ function ShadCN() {
         <ArrowUpIcon />
       </Button>
     </div>
-    <Input placeholder="Enter text" />
     </div>
-    
+    <div>
+    <Input placeholder="Enter text" value={text} onChange={handleChange} />
+    </div>
+    <div>
+      <h2>Output:</h2>
+      <p>{text}</p>
+    </div>
 </>
   )
 }

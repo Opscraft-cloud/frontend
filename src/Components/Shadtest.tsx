@@ -1,4 +1,5 @@
 import React from 'react'
+import { ArrowUpIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Field,
@@ -20,32 +21,12 @@ function ShadCN() {
     <div className="flex min-h-svh flex-col items-center justify-center">
       <div className="flex flex-col gap-8">
       <Button variant="outline" size="icon" className="rounded-full">
-        Click
+        <ArrowUpIcon />
       </Button>
     </div>
+    <Input placeholder="Enter text" />
     </div>
-    <div>
-    <FieldSet>
-  <FieldLegend>Profile</FieldLegend>
-  <FieldDescription>This appears on invoices and emails.</FieldDescription>
-  <FieldGroup>
-    <Field>
-      <FieldLabel htmlFor="name">Full name</FieldLabel>
-      <Input  id="name" autoComplete="off" placeholder="Evil Rabbit" />
-      <FieldDescription>This appears on invoices and emails.</FieldDescription>
-    </Field>
-    <Field>
-      <FieldLabel htmlFor="username">Username</FieldLabel>
-      <Input id="username" autoComplete="off" aria-invalid />
-      <FieldError>Choose another username.</FieldError>
-    </Field>
-    <Field orientation="horizontal">
-      <Switch id="newsletter" />
-      <FieldLabel htmlFor="newsletter">Subscribe to the newsletter</FieldLabel>
-    </Field>
-  </FieldGroup>
-</FieldSet>
-</div>
+    
 </>
   )
 }

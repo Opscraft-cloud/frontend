@@ -18,24 +18,20 @@ import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
 function ShadCN() {
   const [text, setText] = useState("");
-  const handleChange = (e) => {
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
   return (
     <>
     <div className="flex min-h-svh flex-col items-center justify-center">
-      <div className="flex flex-col gap-8">
-      <Button variant="outline" size="icon" className="rounded-full">
-        <ArrowUpIcon />
-      </Button>
-    </div>
-    </div>
+      
     <div>
     <Input placeholder="Enter text" value={text} onChange={handleChange} />
     </div>
     <div>
       <h2>Output:</h2>
       <p>{text}</p>
+    </div>
     </div>
 </>
   )

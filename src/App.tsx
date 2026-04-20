@@ -1,18 +1,17 @@
 import { useState } from 'react'
 import Shadtest from './components/Shadtest'
+import { Navbar } from './components/Navbar'
+import { UserProfileSettings } from './components/UserProfileSettings'
 
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
     <>
-      
-         <h1 className="text-3xl bg-purple-700 font-bold underline">
-    <Shadtest/>
- </h1>
-
-     
-   
+      <Navbar />
+      <main className="container mx-auto px-4 py-8">
+        <UserProfileSettings />
+      </main>
     </>
   )
 }

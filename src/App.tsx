@@ -1,17 +1,22 @@
 import { useState } from 'react'
-import Shadtest from './components/Shadtest'
 import { Navbar } from './components/Navbar'
 import { UserProfileSettings } from './components/UserProfileSettings'
+import { Sidebar } from './components/Sidebar'
 
 function App() {
-  // const [count, setCount] = useState(0)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen)
 
   return (
     <>
-      <Navbar />
-      <main className="container mx-auto px-4 py-8">
-        <UserProfileSettings />
-      </main>
+      <Navbar onToggleSidebar={toggleSidebar} />
+      <div className="flex min-h-screen">
+        <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar} />
+        <main className="flex-1 container mx-auto px-4 py-8">
+          <UserProfileSettings />
+        </main>
+      </div>
     </>
   )
 }

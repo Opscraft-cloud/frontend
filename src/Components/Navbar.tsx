@@ -1,14 +1,12 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Menu, X, User } from "lucide-react"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import { Menu, X, Sidebar as SidebarIcon } from "lucide-react"
 
-export function Navbar() {
+interface NavbarProps {
+  onToggleSidebar?: () => void
+}
+
+export function Navbar({ onToggleSidebar }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   const navItems = [
@@ -17,16 +15,6 @@ export function Navbar() {
     { name: "Services", href: "#" },
     { name: "Contact", href: "#" },
   ]
-
-  const handleProfileSettings = () => {
-    // Navigate to profile settings or scroll to the component
-    window.location.hash = "#profile-settings"
-  }
-
-  const handleLogout = () => {
-    // Handle logout logic here
-    alert("Logged out!")
-  }
 
   return (
     <nav className="bg-white shadow-md">
@@ -51,24 +39,19 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* Right Side: User Profile Dropdown and Mobile Menu */}
+          {/* Right Side: Sidebar Toggle and Mobile Menu */}
           <div className="flex items-center space-x-2">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <User className="h-6 w-6" />
-                  <span className="sr-only">User profile</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
-                <DropdownMenuItem onClick={handleProfileSettings}>
-                  Profile Settings
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={handleLogout}>
-                  Logout
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            {onToggleSidebar && (
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={onToggleSidebar}
+                className="hidden md:flex"
+              >
+                <SidebarIcon className="h-6 w-6" />
+                <span className="sr-only">Toggle sidebar</span>
+              </Button>
+            )}
 
             {/* Mobile Navigation Button */}
             <div className="md:hidden">
